@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Listado producto</title>
+</head>
+<body>
+	<div th:replace="index :: header"></div>
+	<h2>Crear nuevo producto</h2>
+	<br />
+
+	<form th:object="${producto}" th:action="@{/agregar}" method="post">
+		<input type="hidden" th:field="*{idproducto}" />
+		<div th:class="form-group">
+			<label >Nombre <span >*</span></label>
+			<div>
+				<input type="text" th:field="*{nombre}" />
+			</div>
+		</div>
+		<div th:class="form-group">
+			<label>Descripcion <span>*</span></label>
+			<div>
+				<input type="text" th:field="*{descripcion}" />
+			</div>
+		</div>
+
+		<button type="submit">Submit</button>
+	</form>
+
+	<br />
+	<br />
+	<br />
+	<div th:replace="index :: footer"></div>
+</body>
+</html>

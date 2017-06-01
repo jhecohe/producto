@@ -5,11 +5,20 @@
 <title>Listado producto</title>
 </head>
 <body>
+	<div th:if="${mensaje}" role="alert">
+		<p th:text="${mensaje}">mensaje exitoso</p>
+	</div>
+	<div th:replace="index :: header"></div>
 	<table>
-    <tr th:each="pro: ${producto}">
-        <td th:text="${pro.nombre}" />
-        <td th:text="${pro.descripcion}" />
-    </tr>
-</table>
+		<tr th:each="pro: ${producto}">
+			<td th:text="${pro.nombre}" style="border: solid;" />
+			<td th:text="${pro.descripcion}" style="border: solid;" />
+			<td><a href="#" th:href="@{/editar/} + ${pro.idproducto}">Editar</a></td>
+			<td><a href="#" th:href="@{/borrar/} + ${pro.idproducto}">Borrar</a></td>
+		</tr>
+
+	</table>
+	<a href="#" th:href="@{/create}">Nuevo producto</a>
+	<div th:replace="index :: footer"></div>
 </body>
 </html>
